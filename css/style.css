@@ -565,15 +565,94 @@ main {
     }
     
     header h1 {
-        font-size: 1.1rem;
+        font-size: 1rem;
+    }
+    
+    main {
+        padding: 1rem 0.5rem;
+    }
+    
+    .today-schedule {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .today-schedule h3 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .calendar-nav {
+        margin-bottom: 1rem;
+    }
+    
+    .calendar-nav h2 {
+        font-size: 1rem;
+    }
+    
+    .calendar {
+        padding: 0.5rem;
+        gap: 3px;
+    }
+    
+    .calendar-header {
+        font-size: 0.65rem;
+        padding-bottom: 0.4rem;
+    }
+    
+    .calendar-day {
+        border-radius: 6px;
+    }
+    
+    .calendar-day .date {
+        font-size: 0.85rem;
     }
 
     .calendar-day .class-count {
-        font-size: 0.6rem;
+        font-size: 0.5rem;
     }
     
     .lesson {
         padding: 0.85rem 1rem;
+    }
+    
+    .footer {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 0.75rem;
+    }
+    
+    .footer-btn {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.75rem;
+    }
+    
+    .footer-btn i {
+        font-size: 1rem;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 400px) {
+    main {
+        padding: 0.75rem 0.35rem;
+    }
+    
+    .calendar {
+        padding: 0.35rem;
+        gap: 2px;
+    }
+    
+    .calendar-header {
+        font-size: 0.6rem;
+    }
+    
+    .calendar-day .date {
+        font-size: 0.8rem;
+    }
+    
+    .calendar-day .class-count {
+        font-size: 0.45rem;
     }
 }
 
