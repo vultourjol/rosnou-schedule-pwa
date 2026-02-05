@@ -1,0 +1,611 @@
+:root {
+    /* Main Theme Colors - Dark Mode */
+    --bg-color: #121212;
+    /* Background texture removed in favor of canvas */
+    --card-bg: #1e1e1e;
+    --card-bg-glass: rgba(30, 30, 30, 0.85); /* More transparency */
+    
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
+    --primary-light: rgba(59, 130, 246, 0.2);
+    
+    --text-primary: #c0c0c0; /* Softer white (greyish) */
+    --text-secondary: #909090;
+    --text-muted: #606060;
+    
+    --border-color: #333333;
+    --border-active: #3b82f6;
+    
+    /* Lesson Types Colors (Dark Mode Adapted) */
+    --type-lecture-bg: rgba(33, 150, 243, 0.15);
+    --type-lecture-color: #64b5f6;
+    
+    --type-practice-bg: rgba(255, 152, 0, 0.15);
+    --type-practice-color: #ffb74d;
+    
+    --type-seminar-bg: rgba(156, 39, 176, 0.15);
+    --type-seminar-color: #ba68c8;
+    
+    --type-virtual-bg: rgba(59, 130, 246, 0.15);
+    --type-virtual-color: #60a5fa;
+    
+    --type-lab-bg: rgba(244, 67, 54, 0.15);
+    --type-lab-color: #e57373;
+    
+    --type-exam-bg: rgba(233, 30, 99, 0.2);
+    --type-exam-color: #f06292;
+    
+    /* Shadows & Effects */
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 15px rgba(0, 0, 0, 0.4);
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* Header */
+header {
+    background: rgba(18, 18, 18, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+}
+
+header h1 i {
+    color: var(--primary-color);
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.btn-help {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-help:hover {
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+}
+
+.btn-upload {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+}
+
+.btn-upload:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
+}
+
+.btn-upload:active {
+    transform: translateY(0);
+}
+
+/* Main Layout */
+main {
+    padding: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Today's Schedule Card */
+.today-schedule {
+    background: var(--card-bg-glass);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.today-schedule::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary-color);
+}
+
+.today-schedule h3 {
+    margin: 0 0 1.25rem 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.9;
+}
+
+.today-schedule h3 i {
+    color: var(--primary-color);
+}
+
+.today-schedule .lesson {
+    margin-bottom: 0.5rem;
+}
+
+.today-schedule .lesson:last-child {
+    margin-bottom: 0;
+}
+
+.today-schedule .no-classes {
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+
+/* Calendar Navigation */
+.calendar-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+}
+
+.calendar-nav h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.calendar-nav button {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%; /* Circle buttons */
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.calendar-nav button:hover {
+    background: var(--border-color);
+}
+
+/* Calendar Grid */
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px; /* Slightly larger gap */
+    background: var(--card-bg-glass);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+}
+
+.calendar-header {
+    text-align: center;
+    font-weight: 600;
+    padding-bottom: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    min-height: 50px;
+    background: rgba(255, 255, 255, 0.03); /* Subtle backdrop for days */
+}
+
+.calendar-day:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.calendar-day.empty {
+    cursor: default;
+    background: transparent;
+}
+
+.calendar-day.empty:hover {
+    background: transparent;
+    transform: none;
+}
+
+.calendar-day.has-classes {
+    background: rgba(33, 150, 243, 0.1);
+    box-shadow: inset 0 0 0 1px rgba(33, 150, 243, 0.3);
+}
+
+.calendar-day.today {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+}
+
+.calendar-day.today .class-count {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.calendar-day .date {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.calendar-day .class-count {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.calendar-day.has-classes .class-count {
+    color: #64b5f6;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #252525;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes zoomOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+.modal.closing {
+    animation: fadeOut 0.2s ease forwards;
+}
+
+.modal.closing .modal-content {
+    animation: zoomOut 0.2s ease forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.close {
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: color 0.2s;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+}
+
+.close:hover {
+    color: var(--text-primary);
+    background: rgba(255,255,255,0.1);
+}
+
+/* Help Modal */
+.help-content {
+    max-width: 450px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.help-text {
+    line-height: 1.8;
+}
+
+.help-text p {
+    margin-bottom: 1rem;
+}
+
+.help-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.help-text a:hover {
+    text-decoration: underline;
+}
+
+.help-text ul {
+    margin: 0.5rem 0 1rem 1.5rem;
+    padding: 0;
+}
+
+.help-text li {
+    margin-bottom: 0.25rem;
+}
+
+.modal h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+/* Lesson Cards */
+.lesson {
+    background: #2a2a2a;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--border-active);
+    position: relative;
+}
+
+.lesson.lecture { border-left-color: #42a5f5; }
+.lesson.practice { border-left-color: #ffa726; }
+.lesson.seminar { border-left-color: #ab47bc; }
+.lesson.lab { border-left-color: #ef5350; }
+.lesson.exam { border-left-color: #ec407a; background: rgba(233, 30, 99, 0.1); }
+
+.lesson-name {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+}
+
+.lesson-info {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.lesson-info i {
+    vertical-align: middle;
+    margin-right: 0.4rem;
+    color: var(--text-muted);
+}
+
+.lesson-type {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-top: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.type-Л { background: var(--type-lecture-bg); color: var(--type-lecture-color); }
+.type-ПЗ { background: var(--type-practice-bg); color: var(--type-practice-color); }
+.type-С { background: var(--type-seminar-bg); color: var(--type-seminar-color); }
+.type-ВЛ { background: var(--type-virtual-bg); color: var(--type-virtual-color); }
+.type-Лаб { background: var(--type-lab-bg); color: var(--type-lab-color); }
+.type-ЗАЧ { background: var(--type-exam-bg); color: var(--type-exam-color); }
+
+.no-classes {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.no-classes i {
+    font-size: 2.5rem;
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+/* PWA install prompt */
+.install-prompt {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #252525;
+    color: var(--text-primary);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    display: none;
+    gap: 1rem;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-color);
+    z-index: 2000;
+}
+
+.install-prompt.show {
+    display: flex;
+}
+
+.install-prompt button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    header {
+        padding: 0.75rem 1rem;
+    }
+    
+    header h1 {
+        font-size: 1.1rem;
+    }
+
+    .calendar-day .class-count {
+        font-size: 0.6rem;
+    }
+    
+    .lesson {
+        padding: 0.85rem 1rem;
+    }
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    margin-top: 0.5rem;
+}
+
+.footer-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    border: 1px solid var(--border-color);
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+}
+
+.footer-btn i {
+    font-size: 1.1rem;
+}
