@@ -50,6 +50,10 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+html, body {
+    overscroll-behavior: none;
+}
+
 body {
     font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
     background-color: var(--bg-color);
@@ -125,10 +129,12 @@ header h1 i {
     align-items: center;
     gap: 0.5rem;
     transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
 }
 
 .btn-upload:hover {
     background: var(--primary-hover);
+    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
 }
 
 .btn-upload:active {
@@ -284,6 +290,7 @@ main {
 .calendar-day.today {
     background: var(--primary-color);
     color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
 }
 
 .calendar-day.today .class-count {
