@@ -129,12 +129,10 @@ header h1 i {
     align-items: center;
     gap: 0.5rem;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
 }
 
 .btn-upload:hover {
     background: var(--primary-hover);
-    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
 }
 
 .btn-upload:active {
