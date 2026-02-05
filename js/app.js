@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const file = e.target.files[0];
         if (!file) return;
 
-        uploadBtn.textContent = '⏳ Загрузка...';
+        uploadBtn.textContent = 'Загрузка...';
         uploadBtn.disabled = true;
 
         try {
@@ -134,24 +134,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 totalClasses += parser.schedule[date].length;
             }
             
-            uploadBtn.textContent = '✅ Загружено!';
-            console.log(`✅ Загружено ${totalClasses} занятий на ${totalDates} дней`);
+            uploadBtn.textContent = 'Загружено!';
+            console.log(`Загружено ${totalClasses} занятий на ${totalDates} дней`);
             
             // Показываем уведомление
             showNotification(`Загружено ${totalClasses} занятий`);
             
             setTimeout(() => {
-                uploadBtn.textContent = '📤 Загрузить Excel';
+                uploadBtn.textContent = 'Загрузить Excel';
                 uploadBtn.disabled = false;
             }, 2000);
         } catch (error) {
-            console.error('❌ Ошибка парсинга:', error);
-            uploadBtn.textContent = '❌ Ошибка';
+            console.error('Ошибка парсинга:', error);
+            uploadBtn.textContent = 'Ошибка';
             
             showNotification('Ошибка загрузки файла', true);
             
             setTimeout(() => {
-                uploadBtn.textContent = '📤 Загрузить Excel';
+                uploadBtn.textContent = 'Загрузить Excel';
                 uploadBtn.disabled = false;
             }, 2000);
         }
