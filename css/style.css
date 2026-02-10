@@ -4,37 +4,37 @@
     /* Background texture removed in favor of canvas */
     --card-bg: #1e1e1e;
     --card-bg-glass: rgba(30, 30, 30, 0.85); /* More transparency */
-    
+
     --primary-color: #3b82f6;
     --primary-hover: #2563eb;
     --primary-light: rgba(59, 130, 246, 0.2);
-    
+
     --text-primary: #c0c0c0; /* Softer white (greyish) */
     --text-secondary: #909090;
     --text-muted: #606060;
-    
+
     --border-color: #333333;
     --border-active: #3b82f6;
-    
+
     /* Lesson Types Colors (Dark Mode Adapted) */
     --type-lecture-bg: rgba(33, 150, 243, 0.15);
     --type-lecture-color: #64b5f6;
-    
+
     --type-practice-bg: rgba(255, 152, 0, 0.15);
     --type-practice-color: #ffb74d;
-    
+
     --type-seminar-bg: rgba(156, 39, 176, 0.15);
     --type-seminar-color: #ba68c8;
-    
+
     --type-virtual-bg: rgba(59, 130, 246, 0.15);
     --type-virtual-color: #60a5fa;
-    
+
     --type-lab-bg: rgba(244, 67, 54, 0.15);
     --type-lab-color: #e57373;
-    
+
     --type-exam-bg: rgba(233, 30, 99, 0.2);
     --type-exam-color: #f06292;
-    
+
     /* Shadows & Effects */
     --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 8px 15px rgba(0, 0, 0, 0.4);
@@ -50,12 +50,15 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+html,
+body {
     overscroll-behavior: none;
 }
 
 body {
-    font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+    font-family:
+        "SF Mono", "Fira Code", "JetBrains Mono", "Consolas", "Monaco",
+        monospace;
     background-color: var(--bg-color);
     color: var(--text-primary);
     min-height: 100vh;
@@ -107,7 +110,9 @@ header h1 i {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    transition: color 0.2s ease, border-color 0.2s ease;
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .btn-help:hover {
@@ -159,7 +164,7 @@ main {
 }
 
 .today-schedule::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -194,7 +199,6 @@ main {
     padding: 0.5rem 0;
     font-size: 0.95rem;
 }
-
 
 /* Calendar Navigation */
 .calendar-nav {
@@ -338,7 +342,7 @@ main {
     max-height: 85vh;
     overflow-y: auto;
     border: 1px solid var(--border-color);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -373,8 +377,12 @@ main {
 }
 
 @keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 .close {
@@ -389,12 +397,12 @@ main {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .close:hover {
     color: var(--text-primary);
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* Help Modal */
@@ -448,11 +456,22 @@ main {
     position: relative;
 }
 
-.lesson.lecture { border-left-color: #42a5f5; }
-.lesson.practice { border-left-color: #ffa726; }
-.lesson.seminar { border-left-color: #ab47bc; }
-.lesson.lab { border-left-color: #ef5350; }
-.lesson.exam { border-left-color: #ec407a; background: rgba(233, 30, 99, 0.1); }
+.lesson.lecture {
+    border-left-color: #42a5f5;
+}
+.lesson.practice {
+    border-left-color: #ffa726;
+}
+.lesson.seminar {
+    border-left-color: #ab47bc;
+}
+.lesson.lab {
+    border-left-color: #ef5350;
+}
+.lesson.exam {
+    border-left-color: #ec407a;
+    background: rgba(233, 30, 99, 0.1);
+}
 
 .lesson-name {
     font-weight: 600;
@@ -486,12 +505,30 @@ main {
     letter-spacing: 0.5px;
 }
 
-.type-Л { background: var(--type-lecture-bg); color: var(--type-lecture-color); }
-.type-ПЗ { background: var(--type-practice-bg); color: var(--type-practice-color); }
-.type-С { background: var(--type-seminar-bg); color: var(--type-seminar-color); }
-.type-ВЛ { background: var(--type-virtual-bg); color: var(--type-virtual-color); }
-.type-Лаб { background: var(--type-lab-bg); color: var(--type-lab-color); }
-.type-ЗАЧ { background: var(--type-exam-bg); color: var(--type-exam-color); }
+.type-Л {
+    background: var(--type-lecture-bg);
+    color: var(--type-lecture-color);
+}
+.type-ПЗ {
+    background: var(--type-practice-bg);
+    color: var(--type-practice-color);
+}
+.type-С {
+    background: var(--type-seminar-bg);
+    color: var(--type-seminar-color);
+}
+.type-ВЛ {
+    background: var(--type-virtual-bg);
+    color: var(--type-virtual-color);
+}
+.type-Лаб {
+    background: var(--type-lab-bg);
+    color: var(--type-lab-color);
+}
+.type-ЗАЧ {
+    background: var(--type-exam-bg);
+    color: var(--type-exam-color);
+}
 
 .no-classes {
     text-align: center;
@@ -522,7 +559,7 @@ main {
     display: none;
     gap: 1rem;
     align-items: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border: 1px solid var(--border-color);
     z-index: 2000;
 }
@@ -564,47 +601,47 @@ main {
     header {
         padding: 0.75rem 1rem;
     }
-    
+
     header h1 {
         font-size: 1rem;
     }
-    
+
     main {
         padding: 1rem 0.5rem;
     }
-    
+
     .today-schedule {
         padding: 1rem;
         margin-bottom: 1.5rem;
     }
-    
+
     .today-schedule h3 {
         font-size: 1rem;
         margin-bottom: 1rem;
     }
-    
+
     .calendar-nav {
         margin-bottom: 1rem;
     }
-    
+
     .calendar-nav h2 {
         font-size: 1rem;
     }
-    
+
     .calendar {
         padding: 0.5rem;
         gap: 3px;
     }
-    
+
     .calendar-header {
         font-size: 0.65rem;
         padding-bottom: 0.4rem;
     }
-    
+
     .calendar-day {
         border-radius: 6px;
     }
-    
+
     .calendar-day .date {
         font-size: 0.85rem;
     }
@@ -612,22 +649,22 @@ main {
     .calendar-day .class-count {
         font-size: 0.5rem;
     }
-    
+
     .lesson {
         padding: 0.85rem 1rem;
     }
-    
+
     .footer {
         flex-wrap: wrap;
         gap: 0.75rem;
         padding: 0.75rem;
     }
-    
+
     .footer-btn {
         padding: 0.4rem 0.75rem;
         font-size: 0.75rem;
     }
-    
+
     .footer-btn i {
         font-size: 1rem;
     }
@@ -638,20 +675,20 @@ main {
     main {
         padding: 0.75rem 0.35rem;
     }
-    
+
     .calendar {
         padding: 0.35rem;
         gap: 2px;
     }
-    
+
     .calendar-header {
         font-size: 0.6rem;
     }
-    
+
     .calendar-day .date {
         font-size: 0.8rem;
     }
-    
+
     .calendar-day .class-count {
         font-size: 0.45rem;
     }
@@ -678,7 +715,9 @@ main {
     font-size: 0.85rem;
     font-family: inherit;
     border: 1px solid var(--border-color);
-    transition: color 0.2s ease, border-color 0.2s ease;
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .footer-btn:hover {
