@@ -151,29 +151,8 @@ main {
     margin: 0 auto;
 }
 
-/* Today's Schedule Card */
-.today-schedule {
-    background: var(--card-bg-glass);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow-sm);
-    position: relative;
-    overflow: hidden;
-}
-
-.today-schedule::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--primary-color);
-}
-
-.today-schedule h3 {
+/* Today's Schedule */
+#today-title {
     margin: 0 0 1.25rem 0;
     color: var(--text-primary);
     font-size: 1.1rem;
@@ -183,19 +162,23 @@ main {
     opacity: 0.9;
 }
 
-.today-schedule h3 i {
+#today-title i {
     color: var(--primary-color);
 }
 
-.today-schedule .lesson {
-    margin-bottom: 0.5rem;
+#today-lessons {
+    margin-bottom: 2rem;
 }
 
-.today-schedule .lesson:last-child {
+#today-lessons .lesson {
+    margin-bottom: 0.75rem;
+}
+
+#today-lessons .lesson:last-child {
     margin-bottom: 0;
 }
 
-.today-schedule .no-classes {
+#today-lessons .no-classes {
     padding: 0.5rem 0;
     font-size: 0.95rem;
 }
@@ -232,6 +215,36 @@ main {
 
 .calendar-nav button:hover {
     background: var(--border-color);
+}
+
+/* Hints List */
+.hints-list {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.hint-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem 1rem;
+    background: var(--card-bg-glass);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--primary-color);
+}
+
+.hint-teacher {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.hint-subject {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
 }
 
 /* Calendar Grid */
@@ -289,6 +302,11 @@ main {
     border: 1px solid rgba(33, 150, 243, 0.3);
 }
 
+.calendar-day.has-classes:not(.today):hover {
+    background: rgba(33, 150, 243, 0.25);
+    border-color: rgba(33, 150, 243, 0.5);
+}
+
 .calendar-day.today {
     background: var(--primary-color);
     color: white;
@@ -304,7 +322,7 @@ main {
 }
 
 .calendar-day .class-count {
-    font-size: 0.65rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
     margin-top: 4px;
     font-weight: 500;
@@ -334,7 +352,7 @@ main {
 }
 
 .modal-content {
-    background: #252525;
+    background: var(--bg-color);
     padding: 2rem;
     border-radius: 20px;
     max-width: 500px;
@@ -448,28 +466,16 @@ main {
 
 /* Lesson Cards */
 .lesson {
-    background: #2a2a2a;
+    background: var(--card-bg-glass);
     padding: 1rem 1.25rem;
     border-radius: var(--radius-md);
     margin-bottom: 1rem;
-    border-left: 4px solid var(--border-active);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-color);
     position: relative;
 }
 
-.lesson.lecture {
-    border-left-color: #42a5f5;
-}
-.lesson.practice {
-    border-left-color: #ffa726;
-}
-.lesson.seminar {
-    border-left-color: #ab47bc;
-}
-.lesson.lab {
-    border-left-color: #ef5350;
-}
 .lesson.exam {
-    border-left-color: #ec407a;
     background: rgba(233, 30, 99, 0.1);
 }
 
@@ -610,12 +616,11 @@ main {
         padding: 1rem 0.5rem;
     }
 
-    .today-schedule {
-        padding: 1rem;
+    #today-lessons {
         margin-bottom: 1.5rem;
     }
 
-    .today-schedule h3 {
+    #today-title {
         font-size: 1rem;
         margin-bottom: 1rem;
     }
@@ -652,6 +657,10 @@ main {
 
     .lesson {
         padding: 0.85rem 1rem;
+    }
+
+    .modal-content {
+        padding: 1.25rem;
     }
 
     .footer {
@@ -691,6 +700,10 @@ main {
 
     .calendar-day .class-count {
         font-size: 0.45rem;
+    }
+
+    .modal-content {
+        padding: 1rem;
     }
 }
 

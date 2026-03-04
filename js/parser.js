@@ -233,8 +233,10 @@ class ScheduleParser {
               subjectName = prevCol1;
               lessonTime = String(prev[0] || "")
                 .trim()
-                .replace(/,/g, ", ")
-                .replace(/\r\n/g, ", ");
+                .split(/[,\r\n]+/)
+                .map(s => s.trim())
+                .filter(s => s)
+                .join(", ");
               break;
             }
           }
@@ -271,7 +273,11 @@ class ScheduleParser {
       } else {
         // Это строка с названием предмета - ищем занятия здесь тоже
         const subjectName = subjectCell;
-        const lessonTime = timeCell.replace(/,/g, ", ").replace(/\r\n/g, ", ");
+        const lessonTime = timeCell
+          .split(/[,\r\n]+/)
+          .map(s => s.trim())
+          .filter(s => s)
+          .join(", ");
 
         for (let col = 2; col < row.length; col++) {
           const cell = String(row[col] || "").trim();
